@@ -1,8 +1,3 @@
-import os
-import pickle
-from dotenv import load_dotenv
-import openai
-from db import DB
 
 
 class Embeddings:
@@ -39,7 +34,7 @@ class Embeddings:
     def _get_embedding_best_match(self, embedding):
         return self.db.get_match(embedding)
 
-
+        
 # def main():
 #     load_dotenv()
 #     openai.api_key = os.getenv("OPENAIKEY")
