@@ -1,0 +1,13 @@
+{
+  "openapi" : "3.0.0",
+  "info" : {
+    "version" : "1",
+    "title" : "lanternconnect2",
+    "description" : ""
+  },
+  "paths" : { },
+  "servers" : [ {
+    "description" : "SwaggerHub API Auto Mocking",
+    "url" : "https://virtserver.swaggerhub.com/BELACM_1/lanternconnect2/1"
+  } ]
+}
