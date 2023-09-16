@@ -1,2 +1,2 @@
 openai
-pyscopg2
+psycopg2
