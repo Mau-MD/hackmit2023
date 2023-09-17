@@ -16,6 +16,7 @@ def app():
     import openai
     import psycopg2
     from urllib.parse import unquote
+    from psycopg2 import extensions
 
 
     # Embeddings
@@ -30,7 +31,7 @@ def app():
             embedding = self._get_embedding(query)
             return self._get_embedding_best_match(embedding, lecture_id)
 
-            def add_context(self, query, lecture_id, url):
+        def add_context(self, query, lecture_id, url):
             embedding = self._get_embedding(query)
             self._save_embeddings_to_db(lecture_id, query, embedding, url)
 
@@ -82,9 +83,9 @@ def app():
         def convert_to_vector(self,embedding):
             return "{" + ",".join([str(x) for x in embedding]) + "}"
 
-        def get_match(self, query_embedding, lecture_id, n = 10):
+        def get_match(self, query_embedding, lecture_id, n = 3):
             # vector = self.convert_to_vector(query_embedding)
-            query = f"SELECT lecture_id, text, l2sq_dist(vector, ARRAY{query_embedding}) AS dist FROM embeddings WHERE url = {lecture_id} ORDER BY vector <-> ARRAY{query_embedding} LIMIT {n};"
+            query = f"SELECT lecture_id, text, l2sq_dist(vector, ARRAY{query_embedding}) AS dist FROM embeddings WHERE lecture_url = '{lecture_id}' ORDER BY vector <-> ARRAY{query_embedding} LIMIT {n};"
             return self.execute_and_fetch(query)
 
         def add_class(self, class_name):
@@ -102,7 +103,10 @@ def app():
             return lecture_id
 
         def get_lecture_id_by_url(self, url):
-            self.conn.autocommit = False  # Start a new transaction
+            if self.conn.status == extensions.STATUS_IN_TRANSACTION:
+                    self.conn.rollback()  # Rollback if already in a transaction
+                
+            self.conn.autocommit = False  
             try:
                 query = f"SELECT lecture_id FROM lecture WHERE url = '{url}';"
                 self.cursor.execute(query)
@@ -184,6 +188,7 @@ def app():
         lecture_id = json['lecture_id']
 
         contexts = embeddings.get_context(query, lecture_id)
+        print(contexts)
 
         context_arr = []
 
@@ -192,8 +197,10 @@ def app():
             context_arr.append(context_text)
         
 
+        print(context_arr)
 
         response = ask_gpt("\n".join(context_arr), json['query'])
+        print(response)
         return {'response': response}
 
     @app.route('/get-context', methods=['POST'])
@@ -209,7 +216,8 @@ def app():
         json = request.get_json()
         query = json['query'].replace("'", "")
         lecture_url = json['lecture_url']
-        embedding = embeddings.add_context(query, lecture_url)
+        lecture_id = json['lecture_id']
+        embedding = embeddings.add_context(query, lecture_id, lecture_url)
         return "success"
 
     @app.route('/add-class', methods=['POST'])
@@ -243,7 +251,7 @@ def app():
 
 
     @app.route('/kill')
-    def kill(url):
+    def kill():
         res = embeddings.db.kill()
         return 'ok'
 
