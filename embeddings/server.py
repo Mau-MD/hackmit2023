@@ -30,9 +30,9 @@ def app():
             embedding = self._get_embedding(query)
             return self._get_embedding_best_match(embedding, lecture_id)
 
-        def add_context(self, query, lecture_id):
+            def add_context(self, query, lecture_id, url):
             embedding = self._get_embedding(query)
-            self._save_embeddings_to_db(lecture_id, query, embedding)
+            self._save_embeddings_to_db(lecture_id, query, embedding, url)
 
         def _get_embedding(self, text):
             text = text.replace("\n", " ")
@@ -46,8 +46,8 @@ def app():
             with open(filename, 'rb') as f:
                 return pickle.load(f)
 
-        def _save_embeddings_to_db(self, lecture_id, text, embedding):
-            query = f"INSERT INTO embeddings (lecture_id, text, vector) VALUES ({lecture_id}, '{text}', '{self.db.convert_to_vector(embedding)}')"
+        def _save_embeddings_to_db(self, lecture_id, text, embedding, url):
+            query = f"INSERT INTO embeddings (lecture_id, text, vector, lecture_url) VALUES ({lecture_id}, '{text}', '{self.db.convert_to_vector(embedding)}', '{url}')"
             self.db.execute_and_commit(query)
         
         def _get_embedding_best_match(self, embedding, lecture_id):
@@ -84,7 +84,7 @@ def app():
 
         def get_match(self, query_embedding, lecture_id, n = 10):
             # vector = self.convert_to_vector(query_embedding)
-            query = f"SELECT lecture_id, text, l2sq_dist(vector, ARRAY{query_embedding}) AS dist FROM embeddings WHERE lecture_id = {lecture_id} ORDER BY vector <-> ARRAY{query_embedding} LIMIT {n};"
+            query = f"SELECT lecture_id, text, l2sq_dist(vector, ARRAY{query_embedding}) AS dist FROM embeddings WHERE url = {lecture_id} ORDER BY vector <-> ARRAY{query_embedding} LIMIT {n};"
             return self.execute_and_fetch(query)
 
         def add_class(self, class_name):
@@ -102,13 +102,20 @@ def app():
             return lecture_id
 
         def get_lecture_id_by_url(self, url):
-            query = f"SELECT lecture_id FROM lecture WHERE url = '{url}';"
-            self.cursor.execute(query)
-            result = self.cursor.fetchone()
-            if result is None:
+            self.conn.autocommit = False  # Start a new transaction
+            try:
+                query = f"SELECT lecture_id FROM lecture WHERE url = '{url}';"
+                self.cursor.execute(query)
+                result = self.cursor.fetchone()
+                self.conn.commit()  # Commit the transaction
+                if result is None:
+                    return -1
+                else:
+                    return result[0]
+            except Exception as e:
+                self.conn.rollback()  # Roll back the transaction in case of errors
+                print(f"An error occurred: {e}")
                 return -1
-            else:
-                return result[0]
 
         def kill(self):
             query = "DELETE FROM embeddings;"
@@ -201,8 +208,8 @@ def app():
     def add_context():
         json = request.get_json()
         query = json['query'].replace("'", "")
-        lecture_id = json['lecture_id']
-        embedding = embeddings.add_context(query, lecture_id)
+        lecture_url = json['lecture_url']
+        embedding = embeddings.add_context(query, lecture_url)
         return "success"
 
     @app.route('/add-class', methods=['POST'])
