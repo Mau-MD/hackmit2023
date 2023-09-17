@@ -10,15 +10,32 @@
     "128": "images/icon-128.png"
   },
   "permissions": [
-    "https://web-chat.global.assistant.watson.appdomain.cloud/"
+    "https://web-chat.global.assistant.watson.appdomain.cloud/",
+    "https://mau-md--embeddings-app.modal.run/",
+    "activeTab",
+    "webRequest",
+    "webRequestBlocking",
+    "<all_urls>"
   ],
   "content_scripts": [
     {
       "matches": [
         "<all_urls>"
       ],
+      "run_at": "document_start",
       "js": [
-        "scripts/content.js"
+        "inject.js"
+      ]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "WatsonAssistantChatEntry.js",
+        "content.js"
+      ],
+      "matches": [
+        "<all_urls>"
       ]
     }
   ],
