@@ -35,7 +35,7 @@ def read_config():
 
 if __name__ == "__main__":
     base_url = "https://mau-md--embeddings-app.modal.run/kill"
-    requests.post(base_url)
+    requests.get(base_url)
 
     configs = read_config()
     print(configs)
@@ -47,6 +47,7 @@ if __name__ == "__main__":
             file.write(response_text)    
 
     for lecture in configs:
+        print(lecture.url)
         with open(f'lecture_converted/{lecture.lec_name}.txt', 'r') as file:
             contents = file.read().split()
             contents = ' '.join(contents)
@@ -68,19 +69,20 @@ if __name__ == "__main__":
             "url": lecture.url,
         }
         response = requests.post(base_url, json=params)
-        # lec_id = response.text
+        lec_id = response.text
 
         i = 0
         sz = 15
         categories = {}
         chunk = []
-        print(lecture.class_name, lecture.lec_name)
+        print(lecture.class_name, lecture.lec_name, lec_id)
         while i*sz < len(contents):
             base_url = "https://mau-md--embeddings-app.modal.run/add-context"
             params = {
                 # "lecture_id": lecture.lec_id,
-                "lecture_id": lecture.url,
-                "query": ". ".join(contents[i*sz:(i+2)*sz])
+                "lecture_id": lec_id,
+                "query": ". ".join(contents[i*sz:(i+2)*sz]),
+                "lecture_url": lecture.url,
             }
             response = requests.post(base_url, json=params)
             print(response)
