@@ -80,6 +80,13 @@ def app():
             query = f"SELECT lecture_id, text, l2sq_dist(vector, ARRAY{query_embedding}) AS dist FROM embeddings WHERE lecture_id = {lecture_id} ORDER BY vector <-> ARRAY{query_embedding} LIMIT {n};"
             return self.execute_and_fetch(query)
 
+        def add_class(self, class_name):
+            query = f"INSERT INTO class (name) VALUES ('{class_name}');"
+            return self.execute_and_commit(query)
+        
+        def add_lecture(self, lecture_name, class_id, youtube_link, pdf_link):
+            query = f"INSERT INTO lecture (name, class_id, youtube_link, lecture_notes_pdf_link) VALUES ('{lecture_name}', {class_id}, '{youtube_link}', '{pdf_link}') RETURNING lecture_id;"
+            return self.execute_and_fetch(query)
 
         def __del__(self):
             self.conn.close()
@@ -150,6 +157,26 @@ def app():
         lecture_id = json['lecture_id']
         embedding = embeddings.add_context(query, lecture_id)
         return "success"
+
+    @app.route('/add-class', methods=['POST'])
+    def add_class():
+        json = request.get_json()
+        class_name = json['class_name'].replace("'", "")
+
+        embeddings.db.add_class(class_name)
+        return "ok"
+
+    @app.route('/add-lecture', methods=['POST'])
+    def add_lecture():
+        json = request.get_json()
+
+        lecture_name = json['lecture_name'].replace("'", "")
+        class_id = json['class_id']
+        youtube_link = json['youtube_link'].replace("'", "")
+        pdf_link = json['pdf_link'].replace("'", "")
+
+        embeddings.db.add_lecture(lecture_name, class_id, youtube_link, pdf_link)
+        return "ok"
 
     return app
 
