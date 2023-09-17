@@ -1,12 +1,13 @@
 import modal
-from modal import Stub, Image, wsgi_app, Secret
+from modal import Stub, Image, wsgi_app, Secret, Mount
+from pathlib import Path
 
 
 stub = Stub("embeddings")
 image = Image.debian_slim().apt_install("libpq-dev").pip_install("flask", "openai", "python-dotenv", "psycopg2", "flask-swagger-ui", "PyYAML")
 
-
-@stub.function(image=image, secret=modal.Secret.from_name("DB"))
+assets_path = Path(__file__).parent / "assets"
+@stub.function(image=image, secret=modal.Secret.from_name("DB"), mounts=[Mount.from_local_dir(assets_path, remote_path="/assets")])
 @wsgi_app()
 def app():
     from flask import Flask
@@ -64,16 +65,19 @@ def app():
             self.execute_and_commit("SET enable_seqscan = off;")
         
         def execute_and_fetch(self, query):
-            self.cursor.execute(query)
-            return self.cursor.fetchall()
-
+            try:
+                self.cursor.execute(query)
+                return self.cursor.fetchall()
+            except:
+                return []
         
         def execute_and_commit(self, query):
             try:
                 self.cursor.execute(query)
                 self.conn.commit()
             except:
-                transaction.rollback()
+                self.conn.rollback()
+                return False
         
         def convert_to_vector(self,embedding):
             return "{" + ",".join([str(x) for x in embedding]) + "}"
@@ -84,12 +88,18 @@ def app():
             return self.execute_and_fetch(query)
 
         def add_class(self, class_name):
-            query = f"INSERT INTO class (name) VALUES ('{class_name}');"
-            return self.execute_and_commit(query)
+            query = f"INSERT INTO class (name) VALUES ('{class_name}') RETURNING class_id;"
+            self.cursor.execute(query)
+            class_id = self.cursor.fetchone()[0]
+            self.conn.commit()
+            return class_id
         
         def add_lecture(self, lecture_name, class_id, youtube_link, pdf_link):
-            query = f"INSERT INTO lecture (name, class_id, youtube_link, lecture_notes_pdf_link) VALUES ('{lecture_name}', {class_id}, '{youtube_link}', '{pdf_link}')"
-            return self.execute_and_commit(query)
+            query = f"INSERT INTO lecture (name, class_id, youtube_link, lecture_notes_pdf_link) VALUES ('{lecture_name}', {class_id}, '{youtube_link}', '{pdf_link}') RETURNING lecture_id;"
+            self.cursor.execute(query)
+            lecture_id = self.cursor.fetchone()[0]
+            self.conn.commit()
+            return lecture_id
 
         def __del__(self):
             self.conn.close()
@@ -110,7 +120,7 @@ def app():
                 ---
                 Start the answer by saying: "As seen on the lecture..." or something similar
                 ---
-                DO NOT USE INFORMATION IF IS NOT PROVIDED IN THE CONTEXT. If you don't have context to answer the question just say "I don't know the answer to that question" or "I don't have enough information to answer that question" or something similar."""},
+                DO NOT USE INFORMATION AND DO NOT ADD IT TO THE ANSWER IF IS NOT PROVIDED IN THE CONTEXT. If you don't have context to answer the question just say "I don't know the answer to that question" or "I don't have enough information to answer that question" or something similar."""},
             ],
             temperature=0.7
         )
@@ -125,7 +135,8 @@ def app():
     embeddings = Embeddings()
 
     SWAGGER_URL = '/docs'  # URL for exposing Swagger UI (without trailing '/')
-    API_URL = 'https://storage.googleapis.com/opentutor/spec.yaml'  # Our API url (can of course be a local resource)
+    # API_URL = 'https://storage.googleapis.com/opentutor/spec2.yaml'  # Our API url (can of course be a local resource)
+    API_URL='https://mau-md--embeddings-app.modal.run/spec'
 
     # Call factory function to create our blueprint
     swaggerui_blueprint = get_swaggerui_blueprint(
@@ -156,7 +167,7 @@ def app():
 
 
         response = ask_gpt("\n".join(context_arr), json['query'])
-        return response
+        return {'response': response}
 
 
 
@@ -181,8 +192,8 @@ def app():
         json = request.get_json()
         class_name = json['class_name'].replace("'", "")
 
-        embeddings.db.add_class(class_name)
-        return "ok"
+        res = embeddings.db.add_class(class_name)
+        return str(res)
 
     @app.route('/add-lecture', methods=['POST'])
     def add_lecture():
@@ -193,8 +204,13 @@ def app():
         youtube_link = json['youtube_link'].replace("'", "")
         pdf_link = json['pdf_link'].replace("'", "")
 
-        embeddings.db.add_lecture(lecture_name, class_id, youtube_link, pdf_link)
-        return "ok"
+        res =  embeddings.db.add_lecture(lecture_name, class_id, youtube_link, pdf_link)
+        return str(res)
 
+    from flask import send_file
+
+    @app.route('/spec', methods=['GET'])
+    def spec_yaml():
+        return send_file('/assets/spec.yaml', mimetype='text/yaml')
     return app
 

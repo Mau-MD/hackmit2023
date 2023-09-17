@@ -27,8 +27,11 @@ paths:
           content:
             application/json:
               schema:
-                type: string
-                example: "As seen in the lecture, the process of defining requirements is an iterative one. Typically, at the system requirements review, we review and agree on the high-level requirements, such as level 0 and level 1, but not the lower-level requirements. This is because the lower-level requirements cannot be fully determined until the design process has progressed. So, it is not recommended to start the requirements at the lower level initially. It is important to first establish the high-level requirements and then proceed with the iterative process of refining and defining the lower-level requirements as the design decisions are made."
+                type: object
+                properties:
+                  response:
+                    type: string
+                    example: "As seen in the lecture, the process of defining requirements is an iterative one. Typically, at the system requirements review, we review and agree on the high-level requirements, such as level 0 and level 1, but not the lower-level requirements. This is because the lower-level requirements cannot be fully determined until the design process has progressed. So, it is not recommended to start the requirements at the lower level initially. It is important to first establish the high-level requirements and then proceed with the iterative process of refining and defining the lower-level requirements as the design decisions are made."
 
   /get-context:
     post:
