@@ -69,8 +69,11 @@ def app():
 
         
         def execute_and_commit(self, query):
-            self.cursor.execute(query)
-            self.conn.commit()
+            try:
+                self.cursor.execute(query)
+                self.conn.commit()
+            except:
+                transaction.rollback()
         
         def convert_to_vector(self,embedding):
             return "{" + ",".join([str(x) for x in embedding]) + "}"
@@ -85,8 +88,8 @@ def app():
             return self.execute_and_commit(query)
         
         def add_lecture(self, lecture_name, class_id, youtube_link, pdf_link):
-            query = f"INSERT INTO lecture (name, class_id, youtube_link, lecture_notes_pdf_link) VALUES ('{lecture_name}', {class_id}, '{youtube_link}', '{pdf_link}') RETURNING lecture_id;"
-            return self.execute_and_fetch(query)
+            query = f"INSERT INTO lecture (name, class_id, youtube_link, lecture_notes_pdf_link) VALUES ('{lecture_name}', {class_id}, '{youtube_link}', '{pdf_link}')"
+            return self.execute_and_commit(query)
 
         def __del__(self):
             self.conn.close()
