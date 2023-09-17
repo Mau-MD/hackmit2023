@@ -4,7 +4,7 @@ from pathlib import Path
 
 
 stub = Stub("embeddings")
-image = Image.debian_slim().apt_install("libpq-dev").pip_install("flask", "openai", "python-dotenv", "psycopg2", "flask-swagger-ui", "PyYAML")
+image = Image.debian_slim().apt_install("libpq-dev").pip_install("flask", "openai", "python-dotenv", "psycopg2", "flask-swagger-ui", "PyYAML", "flask_cors")
 
 assets_path = Path(__file__).parent / "assets"
 @stub.function(image=image, secret=modal.Secret.from_name("DB"), mounts=[Mount.from_local_dir(assets_path, remote_path="/assets")])
@@ -15,7 +15,7 @@ def app():
     import pickle
     import openai
     import psycopg2
-
+    from urllib.parse import unquote
 
 
     # Embeddings
@@ -94,12 +94,31 @@ def app():
             self.conn.commit()
             return class_id
         
-        def add_lecture(self, lecture_name, class_id, youtube_link, pdf_link):
-            query = f"INSERT INTO lecture (name, class_id, youtube_link, lecture_notes_pdf_link) VALUES ('{lecture_name}', {class_id}, '{youtube_link}', '{pdf_link}') RETURNING lecture_id;"
+        def add_lecture(self, lecture_name, class_id, url):
+            query = f"INSERT INTO lecture (name, class_id, url) VALUES ('{lecture_name}', {class_id}, '{url}') RETURNING lecture_id;"
             self.cursor.execute(query)
             lecture_id = self.cursor.fetchone()[0]
             self.conn.commit()
             return lecture_id
+
+        def get_lecture_id_by_url(self, url):
+            query = f"SELECT lecture_id FROM lecture WHERE url = '{url}';"
+            self.cursor.execute(query)
+            result = self.cursor.fetchone()
+            if result is None:
+                return -1
+            else:
+                return result[0]
+
+        def kill(self):
+            query = "DELETE FROM embeddings;"
+            self.execute_and_commit(query)
+
+            query = "DELETE FROM lecture;"
+            self.execute_and_commit(query)
+
+            query = "DELETE FROM class;"
+            self.execute_and_commit(query)
 
         def __del__(self):
             self.conn.close()
@@ -127,15 +146,16 @@ def app():
 
         return response['choices'][0]['message']['content']
 
-    app = Flask(__name__)
-
-    from flask import request
+    from flask import Flask, request
+    from flask_cors import CORS
     from flask_swagger_ui import get_swaggerui_blueprint
+
+    app = Flask(__name__)
+    CORS(app, resources={r"/*": {"origins": "*"}})  # This will enable CORS for all routes
 
     embeddings = Embeddings()
 
     SWAGGER_URL = '/docs'  # URL for exposing Swagger UI (without trailing '/')
-    # API_URL = 'https://storage.googleapis.com/opentutor/spec2.yaml'  # Our API url (can of course be a local resource)
     API_URL='https://mau-md--embeddings-app.modal.run/spec'
 
     # Call factory function to create our blueprint
@@ -169,8 +189,6 @@ def app():
         response = ask_gpt("\n".join(context_arr), json['query'])
         return {'response': response}
 
-
-
     @app.route('/get-context', methods=['POST'])
     def get_context():
         json = request.get_json()
@@ -201,16 +219,52 @@ def app():
 
         lecture_name = json['lecture_name'].replace("'", "")
         class_id = json['class_id']
-        youtube_link = json['youtube_link'].replace("'", "")
-        pdf_link = json['pdf_link'].replace("'", "")
+        url = json['url'].replace("'", "")
 
-        res =  embeddings.db.add_lecture(lecture_name, class_id, youtube_link, pdf_link)
+
+        res =  embeddings.db.add_lecture(lecture_name, class_id, url)
         return str(res)
+
+    @app.route('/get-lecture-id/<url>')
+    def get_lecture_id(url):
+
+        url = url.replace("'", "")
+        decoded_url = unquote(url)
+
+        res = embeddings.db.get_lecture_id_by_url(decoded_url)
+        return {'id': str(res)}
+
+
+    @app.route('/kill')
+    def kill(url):
+        res = embeddings.db.kill()
+        return 'ok'
 
     from flask import send_file
 
     @app.route('/spec', methods=['GET'])
     def spec_yaml():
         return send_file('/assets/spec.yaml', mimetype='text/yaml')
+
+
+    from flask import Response
+
+    @app.route("/get-watson", methods=['GET'])
+    def get_watson():
+        data = """
+            window.watsonAssistantChatOptions = {
+                integrationID: "aec400f8-ffeb-4672-a3b0-5c0ec7582f75", // The ID of this integration.
+                region: "us-east", // The region your integration is hosted in.
+                serviceInstanceID: "e5fa945d-0470-491c-a731-719f63cd76ff", // The ID of your service instance.
+                onLoad: function(instance) { instance.render(); }
+            };
+            setTimeout(function(){
+                const t=document.createElement('script');
+                t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+                document.head.appendChild(t);
+            });
+        """
+
+        return Response(data, mimetype='application/javascript')
     return app
 
