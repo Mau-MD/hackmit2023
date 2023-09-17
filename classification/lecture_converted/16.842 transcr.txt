@@ -3,7 +3,6 @@ The following content is provided under a Creative Commons license. Your support
 OpenCourseWare continue to offer high quality educational resources for free. To make a donation or to view
 additional materials from hundreds of MIT courses, visit MIT OpenCourseWare at ocw.mit.edu.
 PROFESSOR:
-
 You have to make some design decisions. And then once you've made those design
 decisions, then you can actually write your level 2, level 3 requirements and so forth, it's an
 iterative process. But when you look at the classic v model, you don't really see those
@@ -11,7 +10,6 @@ iterations. But they actually exist.
 So what we typically do at the system requirements review is we review and then agree on the
 high level requirements, level 0, level 1, maybe level 2 requirement, but not the lower level
 ones, because you can't, because you typically haven't done the design yet.
-
 The other thing I want to say is a lot of the-- this is really a critical issue. And a lot of the
 problems we talked about last time in the schedule, cost overruns, really, a lot of these things
 are traceable back to the requirements. Either the requirements were over ambitious. You can
@@ -31,9 +29,7 @@ communication. So we don't know for sure. But their best guess is that the space
 up in the approach to Mars, that the actual altitude at which had entered the Martian
 atmosphere was about 57 kilometers. And it was supposed to be about 220. So even though
 the Martian atmosphere is very thin, when you enter at very high velocities, that's not a good
-thing.
-
-This is the very famous-- you've heard about this-- confusion of units problem, like this mission
+thing.This is the very famous-- you've heard about this-- confusion of units problem, like this mission
 that one part of the team used SI units, specifically Newton's seconds, this is momentum,
 right? Force times time, that gives you momentum. So when you burn your engines for x
 number of seconds the sum of the product of those two is your momentum. And then another
@@ -63,12 +59,11 @@ Airlines. And Douglas, who by the way, is a graduate of this department here at 
 Douglas, was the head of the Douglas Aircraft Company. And here are the requirements:
 range about 1,000 miles. So this means that you don't have a trans-continental range, right? If
 you want transcontinental range in the US, you need about how many miles? Like Boston to
-San Diego, Seattle to Miami. 3,000? Yeah, reserves. Yeah, 3,000 miles.
-
-So this means that, if you go transcontinental with the DC-3, you've got to refuel twice,
+San Diego, Seattle to Miami. 3,000? Yeah, reserves. Yeah, 3,000 miles.So this means that, if you go transcontinental with the DC-3, you've got to refuel twice,
 basically. But you know, that was OK. Today, we wouldn't-- we probably wouldn't accept it. But
 that's OK back then. Cruise speed about 150 miles. 20 to 30 passengers, depending on the
-configuration. Twin engines. And then something that we would say today. That's a fuzzy-that's a not a well written requirement, because it's fuzzy. But it said, it should be a rugged and
+configuration. Twin engines. And then something that we would say today. That's a fuzzy--
+that's a not a well written requirement, because it's fuzzy. But it said, it should be a rugged and
 economical.
 And based on this sort of high level requirements that were pretty clearly defined, the airplane
 was then designed, built, and very, very successful. And over 10,000 copies of this airplane
@@ -88,27 +83,15 @@ airplanes? What materials did they use?
 [STATIC]
 [INAUDIBLE]
 AUDIENCE:
-
 Wood.
-
 PROFESSOR:
-
 Wood, yeah. What else?
-
 AUDIENCE:
-
 Canvas.
-
 PROFESSOR:
-
-Canvas.
-
-AUDIENCE:
-
+Canvas.AUDIENCE:
 [INAUDIBLE]
-
 PROFESSOR:
-
 Exactly. so then very soon after that, maybe in the 20s and 30s, we started using metals,
 right? Metallic structures. And the big issue there, especially if you're flying close to the ocean
 and salt water, is corrosion control. Your airplanes can't rust. And so a corrosion control
@@ -138,9 +121,7 @@ engineering handbook, there's two sections, 4.2, which is about technical requir
 definition, and then section 6.2, which is about requirements management. So definition
 means that's the initial definition of the initial requirement. And then management is the
 process of updating them, adding requirements, modifying them, making sure they're up to
-date. And there are a couple of appendices.
-
-INCOSE, the International Council of System Engineering has, in the handbook, a whole
+date. And there are a couple of appendices.INCOSE, the International Council of System Engineering has, in the handbook, a whole
 section. There's even a requirement working group, people who really specialize in this, and
 then as well in the ISO standard, you have a lot written about requirements. So this is really a
 big deal.
@@ -167,19 +148,11 @@ the maximum. So that's the upper bound.
 The next one, the total build cost should be less than $550,000. Should be. What is that?
 Maybe an EPFL.
 AUDIENCE:
-
 It's a goal.
-
 PROFESSOR:
-
 It's a goal. Yup, that's right. And is it in the design space or the objective space?
-
 AUDIENCE:
-
-The objective space.
-
-PROFESSOR:
-
+The objective space.PROFESSOR:
 That's correct. So I put this as a dashed line, OK, because it's a should. So what I've done
 here, just by writing these two sentences, these two requirements, is I've essentially carved
 out a space, right? And I can shape that box. Basically, what these two requirements do is
@@ -205,14 +178,10 @@ sure. So think about this. And then submit your answers. And as far as these URL
 concerned, for the concept questions, I went to all lowercase. Hopefully, that's a little bit
 easier. So secc3. tiny.cc/secc3. What do you think? Requirements and specifications. The
 same thing or not?
-
 Who needs more time? Anybody? OK.
-
 OK, so we have nobody thinks they're the same. 62 thirds of you think that requirements are
 the input, specifications are the output. 9 of you think that requirements are a subset. And then
-6% are not sure. So that's good. I agree with that.
-
-So a lot of people use requirements and specifications as the same thing. They're really not.
+6% are not sure. So that's good. I agree with that.So a lot of people use requirements and specifications as the same thing. They're really not.
 OK, so think of requirements and you haven't actually started to design that. This is your
 putting constraints in the design space, defining the direction. But we don't actually know what
 the design will look like. You may have some requirements may say you must use this box, or
@@ -223,43 +192,31 @@ specifications used interchangeably or not interchangeably? Has this come up as 
 you before? [? Marissa, ?] you're worked at-- you're worked on human spaceflight, right?
 Space tourism vehicles. So what-- how did you guys do it at Virgin Galactic?
 AUDIENCE:
-
 Well, I think something that you generally saw was like people will look at sensors. And they
 would-- there's a specification for a sensor. And they would not necessarily compare the
 requirements to the specification. So or they would not understand how the two intersected.
 So I think there was a bit of a misunderstanding of the difference between what the actual
 requirements were, versus what the specifications were designed to be.
-
 PROFESSOR:
-
 The sensors you're talking about would be sensors, I'm assuming, that you would purchase,
 right? As commercial--
-
 AUDIENCE:
-
 Yeah, absolutely. So I think we were buying of the shelf. And so I mean, sometimes the
 specifications were broader than what we wanted and sometimes they were narrower. But you
 know, you can do additional testing on it. So there was sometimes a breakdown between
 understanding really whether the sensor met what we are looking for or it didn't.
-
 PROFESSOR:
-
 OK. Good. What about an EPFL. Any experiences? [? Walker, ?] you worked on slip rings,
 right? Slip rings was one of the big specialties of your company. I'm assuming that you guys
 had to make that distinction, right? Between requirements and specifications. What are your
 thoughts at EPFL on this?
-
-GUEST SPEAKER: Well, yes, from outside, we clearly had a separation also on an ether level. But I was
+GUEST SPEAKER:
+Well, yes, from outside, we clearly had a separation also on an ether level. But I was
 wondering here in the class, has anybody seen the difference between specification
 requirements? Any comments? Maybe some of the PhD students that have been around the
-block?
-
-AUDIENCE:
-
+block?AUDIENCE:
 [INAUDIBLE]
-
 PROFESSOR:
-
 Yeah, OK, great. So I found here, I, you know, I wanted to sort of find a real example that
 everybody can relate to very, very easily. So the answer is there is a distinction. They are quite
 different. But they're-- got to be careful, because you can mix them up.
@@ -288,9 +245,7 @@ for different food types, rice, pizza, frozen meals. And that, what is that? Tha
 right? Rather than having to guess how long and at what power level to reheat, there's some
 partial automation built in. That's essentially requirements, very user centric. Do you see that?
 And then when you look under specification, it says the following things: stainless steel
-exterior, right? Again, you don't want it to rust. The dimensions, the weight. There's a general
-
-warranty one year. The power cord is included. It's very different. Those are things that
+exterior, right? Again, you don't want it to rust. The dimensions, the weight. There's a generalwarranty one year. The power cord is included. It's very different. Those are things that
 describe how it's made, the form of it, and so forth. So make sure you keep those separate.
 OK, so let me talk about the NASA requirements process. And then we'll talk about challenges.
 So getting back to the system engineering engine. That's sort of the heart of the NASA system
@@ -319,9 +274,7 @@ that will meet these requirements. That's pretty serious stuff.
 By writing good technical requirements, you can reduce the development effort, because of
 less rework. So a lot of rework and iterations and confusion is based on missing or poorly
 written requirement, right? And writing those early and before the design begins is helpful.
-A requirements set is also a basis for cost and schedule estimates. And so some of these
-
-missions that overran. Do you remember I showed you this chart last time. We analyzed 40
+A requirements set is also a basis for cost and schedule estimates. And so some of thesemissions that overran. Do you remember I showed you this chart last time. We analyzed 40
 missions, earth and space science missions. Like 20% of them were responsible for 80% of
 the overruns. A lot of that had to do with unrealistic goals or expectations and requirements.
 And then the next point here is that the requirements provide the basis for verification. In other
@@ -343,36 +296,24 @@ Ideally, you want to write all the requirements upfront, right? That would be gr
 to do that, you hit a wall. Why is that? What's the issue? Why can't we just write all the
 requirements and then be done with it in one shot? Yes. Go ahead.
 AUDIENCE:
-
 Well, your system changes over time. And some of the requirements clash. And you can't
 achieve all of them simultaneously.
-
 PROFESSOR:
-
 Yes. so there's two things you mentioned. So one is the sort of-- and I'll talk. This is known as,
 requirements volatility, like the requirements are changing as you learn more about the
 problem. And then the other is you detect conflict between requirements. And you have to
 clean those up. Those are two very valid issues. But it's not quite what I was going for.
-
 AUDIENCE:
-
 There's another one, requirements creep, in which your customer levies these new
 requirements on you, once you've started the process.
-
 PROFESSOR:
-
-Yes, so new requirements get added. Hopefully, you get more budget, too. That doesn't
-
-always happen, right? So that's another issue. But it's a little different. Let's see, EPFL, you
+Yes, so new requirements get added. Hopefully, you get more budget, too. That doesn'talways happen, right? So that's another issue. But it's a little different. Let's see, EPFL, you
 guys. Why don't we write like all four or five levels of requirements all at once? Why can't we
 do that, typically? Why do you think?
 AUDIENCE:
-
 Usually, the other requirements aren't clear. They don't exist yet. Later on in the process, they
 become clear. And you start to realize the details, which at first, you don't.
-
 PROFESSOR:
-
 That's-- I think that's pretty close to what I'm looking for. So the issue is you do your level 0,
 level 1 requirements. And then sort of as you get to level 2, you can't really write that level 2
 requirement until you've made some key design decisions. Are we going to use electric
@@ -394,16 +335,11 @@ are true. But the fundamental reason why we can't write all the requirements upf
 at some point, the lower level requirements depend on design decisions made. That's the
 fundamental issue.
 OK, any questions about that point? Yes?
-
 AUDIENCE:
-
 It's not totally about that point. But it's still like-- So requirements versus specification. So if
 you're like buying a component from a vendor, some piece of hardware, and you want identify
 like the specific locations where it should attach to things, it's more of like a form as opposed
-to really-- so does that fall into requirements or is that like a specification?
-
-PROFESSOR:
-
+to really-- so does that fall into requirements or is that like a specification?PROFESSOR:
 Great point. So there are-- what you're describing is a peculiar type of requirement that we call
 interface requirements. And it's a perfect segue to this next-- you know, if I could only include
 like I don't five slides in this lecture, this would be one of them. This basically is what are the
@@ -423,15 +359,11 @@ So in this case, this thrust vector controller shall gimbal the engine 9 degrees
 deflection angle, at least 9 degrees, plus or minus 1 degree, degree. 0.1 degree. That's the
 performance requirement.
 Then we have constraints. OK, yeah?
-
 STUDENT:
-
 Isn't the performance department saying that the engine has to gimbal 9 degrees, isn't that
 kind of pushing toward the specification. Or is that? I mean, I guess, is can also be a
 requirement. But isn't that?
-
 PROFESSOR:
-
 Right, in this case, we have a set, and we're not specifying how those 9 degrees are achieved,
 you know, whether it's through a gimbal or the actual mechanism or how it's not described
 here. All that's described is the angular [? range, ?] essentially, that this. And that is a
@@ -439,9 +371,7 @@ performance requirement. But you'll see, there will be some examples of things t
 putting limits on the form, which looks more like a specification.
 So then we have constraints. Constraints are things on like weight, mass, power, things like
 that. So constraints are requirements that cannot be traded off with respect that cost,
-schedule, or performance. So for example, the prospector controller unit module shall weigh
-
-less than 120 pounds. So that's a-- that's not, if you think about it, that is not functional, right?
+schedule, or performance. So for example, the prospector controller unit module shall weighless than 120 pounds. So that's a-- that's not, if you think about it, that is not functional, right?
 The weight of the thrust vector controller shall not be more than 100-- that is not performance.
 It's not functional requirement, but it's a constraint on the form, essentially. So this looks more
 like what we would call a specification constraint.
@@ -456,7 +386,8 @@ Then the fifth category are environmental requirements. So the TVC shall use [? 
 acoustic shocks and loads according, again, to some environmental document. And by the
 way, for the CanSat competition, we have that, right? There's two documents. There's the
 mission guide. And then there's this environmental testing guide.
-So what this essentially says is under what conditions shall the performance, and functional-the functions and performance that are specified in the first two type of requirements, under
+So what this essentially says is under what conditions shall the performance, and functional--
+the functions and performance that are specified in the first two type of requirements, under
 what conditions shall that be performed, right? And if anything you think about it, designing
 whether it's a sensor or anything to operate between 0 degrees Celsius and 30 degrees
 Celsius or between minus 60 and plus 80, is a huge difference, right? You can write that down.
@@ -471,9 +402,7 @@ environmental requirements, the more complex the system will be.
 Also medical-- anybody working on medical devices here? EPFL. Anybody? Medical devices?
 So in medical devices, it's the same thing. Is this medical device going to be used in a hospital
 setting, where everything is kind of clean. You have clean power. The nurses, everybody is
-very well-trained. That's one thing. Or is his medical device going to be used in the field, you
-
-know? In Africa, in India, in a rural area, where people are not, maybe not trained, medically
+very well-trained. That's one thing. Or is his medical device going to be used in the field, youknow? In Africa, in India, in a rural area, where people are not, maybe not trained, medically
 and professionally and so forth. Very different. The function may be the same. But the
 environmental conditions are very different. You have to really specify those.
 And then we have-- the last category is kind of the other. It's sort of a catchall. But it can be
@@ -493,13 +422,10 @@ Feasible means, what? It means this requirement can be satisfied within the laws
 and state of the art technologies and other project constraints. So why is that a tricky one?
 Go ahead.
 AUDIENCE:
-
 I was going to ask a question regarding that, in terms of how do you deal with a program
 where you're working on things or you're trying to actually maybe define the state of the art or
 figure out what is feasible.
-
 PROFESSOR:
-
 Right. so if you're basically designing a product or a project or a system that's a repeat of
 what's already been done, then you can have pretty good confidence, right, that those poles
 are feasible. But what if you're doing, let's say the-- I think I mentioned this last time. You're
@@ -507,9 +433,7 @@ going to Europa. And you're going to drill through the ice. And you're going to 
 ocean under the ice in Europa. It's never been done before. You know, can we actually do
 this? So this is the tricky thing. How ambitious, how ambitious can the requirements be and
 you still claim feasibility?
-And that's also one of the big reasons why programs get in trouble is when they're actually
-
-defining requirements that are not really feasible within-- they're definitely way beyond the
+And that's also one of the big reasons why programs get in trouble is when they're actuallydefining requirements that are not really feasible within-- they're definitely way beyond the
 state of the art. And within the time frame and budget allocated, you can't get there. And
 many, many programs that run into this problem are the ones where the technologies that
 you're going to use are not really ready yet. You know, there-- we'll talk later about technology
@@ -521,14 +445,11 @@ should have the same or very similar interpretation. Singular statement, one act
 object. And then the last point here is verifiability. How are you going to check whether or not
 this requirement will, in fact, satisfy you.
 AUDIENCE:
-
 With regard to that, the feasibility again for some of these programs I had large, [? overrun ?]
 schedule, overruns. I mean, would it be almost better in a sense to have some of the
 requirements be more shalls, like-- or goal. In other words, you know, if you can do this, go for
 it. But if you're going to run over 10 years, maybe back off a couple of percent.
-
 PROFESSOR:
-
 That's right. And what-- we'll talk about this a little bit. But if you-- all of them are shall
 statements. They're all hard constraints. The objective space that I showed you may, in fact,
 have 0 feasible space. So really knowing where, what is a hard constraint, what is a hard
@@ -537,24 +458,18 @@ just accept requirements. You know, if you're going to run a project, every requ
 want to really understand it. And if you think this requirement is infeasible, you have to
 negotiate. That's where the upfront negotiation becomes really important. Did we lose our
 EPFL? OK.
-
-GUEST SPEAKER: Hello?
+GUEST SPEAKER:
+Hello?
 PROFESSOR:
-
 Go ahead, please.
-
-GUEST SPEAKER: [INAUDIBLE]
+GUEST SPEAKER:
+[INAUDIBLE]
 PROFESSOR:
-
 Please, go for it.
-
 AUDIENCE:
-
 So in 1990, we got the requirements from NASA to build a space [? bioreactor. ?] And all the
 students will love this. It was the smallest brewery that ever flew in space. And the initial
-requirements was that all fluid containers had to be solid with double walls. And this meant that
-
-we had another solution with bladders. [INAUDIBLE] bladders.
+requirements was that all fluid containers had to be solid with double walls. And this meant thatwe had another solution with bladders. [INAUDIBLE] bladders.
 So we had a real fight up front in the proposal phase to demonstrate the compliancy to the
 requirement of going the cell culture, yeast cell culture, and still being non-compliant, actually,
 to this requirement of hard double-walled fluid containers. And so this is exactly [? the point,
@@ -564,24 +479,18 @@ customers. They are [INAUDIBLE] set in their ways. And you have to demonstrate t
 feasibility to them to make them change the requirement that allows you to change the
 specification.
 PROFESSOR:
-
 No, I think that's a great example. So in the end, you were successful to argue for the bladder
 the bladder solution.
-
-GUEST SPEAKER: Well, the bladder was just how to keep the fresh medium and the used medium, meaning the
+GUEST SPEAKER:
+Well, the bladder was just how to keep the fresh medium and the used medium, meaning the
 beer. The technology was to put in [INAUDIBLE] And actually, it needed to have flexibility on
 the pressure in the reservoir. That's why the argument to put [INAUDIBLE] in space finally won
 the day, and allowed to relax the other requirements.
 PROFESSOR:
-
 Yeah, thank you, thank you. A great example there. Any other comments?
-
 AUDIENCE:
-
 [COUGHING]
-
 PROFESSOR:
-
 OK, so so all this is a pretty long list. And this applies to single requirements. And then there's
 a set of-- this is really important. Then there's a set of characteristics that we want to see when
 you look at sets of requirements, groups that require.
@@ -593,9 +502,7 @@ This is a tricky one.
 Requirements can be in tension with each other, particularly their should goals. But they
 shouldn't be in direct conflict with each other, like you know you shall use aluminum for this
 unit. And then another requirements says, no metals are allowed to be used in this unit. You
-can't. That conflict is not solvable. That's a direct contradiction. That's different from having
-
-competing requirements or requirements in tension.
+can't. That conflict is not solvable. That's a direct contradiction. That's different from havingcompeting requirements or requirements in tension.
 So let's do a quick exercise. And then we'll actually take a break, as well. So this is a turn to
 your partner exercise. And then we'll have a break. And we'll restart in like about seven
 minutes.
@@ -617,153 +524,91 @@ then jointly discuss and write a requirement that you think led to this design, 
 So take about five minutes. Take a break. And then we'll sample what you came up with.
 So let's hear from EPFL first. did anybody do A?
 AUDIENCE:
-
 We did A.
-
 PROFESSOR:
-
 OK, go for it. Speak up.
-
 AUDIENCE:
-
 We had four requirements for.
-
 PROFESSOR:
-
 OK, go for it.
-
 AUDIENCE:
-
 All right. So The tape shows [INAUDIBLE] of the tape should be less than 4 grand. The tape
-should be able to catch up to 60 insects. And the sticky tape should not be toxic for humans.
-
-PROFESSOR:
-
+should be able to catch up to 60 insects. And the sticky tape should not be toxic for humans.PROFESSOR:
 OK, I like, yeah, the toxicity. That's good. Excellent. Very good. ow who did A here at MIT.
 Anybody? A? Go for it.
-
 AUDIENCE:
-
 We said if greater than 10% of the surface area of the fly contacts the paper, it shall not be
 able to release itself.
-
 PROFESSOR:
-
 Ah, I see. So this is a trapping requirement.
-
 AUDIENCE:
-
 Yeah, how effective should it--
-
 PROFESSOR:
-
 There are different, very different flies, right? There like these little day flies. And then there's
 huge horseflies. So which type of fly did this apply to.
-
 AUDIENCE:
-
 We said 10% of the surface area of the fly.
-
 PROFESSOR:
-
 Oh, any type of fly. Any different fly species.
-
 AUDIENCE:
-
 Yeah.
-
 PROFESSOR:
-
 OK.
-
 All right, cool. So go ahead. Well, you know the point of this. You get the point of this is, right?
 A is like the sort of you think trivial system. But once you really start thinking about it, it's pretty
 tricky, right? Who else wants to, A-- something that hasn't been mentioned yet on A. Sam, go
 for it. Make sure you push the button.
 AUDIENCE:
-
 Yeah, for the sticky trap we said that the product shall fit on a store shelf when packaged.
-
 PROFESSOR:
-
 OK, so that's kind of packaging, logistics, distribution requirement. Very good. Mike?
-
 AUDIENCE:
-
 They kind of already touched on it, but the sticky tape shall not be toxic and allow for-- allow
 for removal of human skin without bodily harm.
-
 PROFESSOR:
-
 OK, great. So that's in the same-- you know, human factors requirement, basically. Yeah. Very
 good. Anything else on A at EPFL?
-
 AUDIENCE:
-
 [INAUDIBLE]
-
 PROFESSOR:
-
-OK, so installation requirement. OK. Nobody mentioned the ones I remember as a child are
-
-bigger than this. They were really long. So capacity, right? You could sort of have a length or
+OK, so installation requirement. OK. Nobody mentioned the ones I remember as a child arebigger than this. They were really long. So capacity, right? You could sort of have a length or
 capacity requirement, as well. Good. All right. I think we want to move on from the sticky flies
 to BMW i3.
 So we had a little discussion here during the break. [? Lucy, ?] go for it.
 AUDIENCE:
-
 So the car shell meet environmental regulations through mechanical or software tweaking with
 a proposal.
-
 PROFESSOR:
-
 Could you guys hear this at EPFL? You've been following the news, right? With Volkswagon.
-
 So what happened? Why did Volks-- the CEO just step down, right? It's kind of a big deal.
 Trust in the company has eroded. What happened there?
 AUDIENCE:
-
 So the requirements that were set at the start. So the car shell meet environmental regulations
 on emissions. This requirement was probably not met. But the realization that it wasn't met
 was probably too late in the design process, such that it cannot be changed. And so the easy
 or cheap way to meet environmental regulations, in that case, was to tweak the software, I
 guess.
-
 PROFESSOR:
-
 Right. So by the way this is kind of interesting. But how do you measure environmental
 compliance of emissions for cars? Do you know how that's done in practice? Do you guys
 know?
-
 AUDIENCE:
-
 So it's having [? the car ?] run on a-- having the engine run, but the car is not rolling. And
 there's, behind the [FRENCH] the exhaust. Behind the exhaust, you measure whatever is
 emitted.
-
 PROFESSOR:
-
 And it's like another rolling carpet, right? It's a dynamo, basically. And the way they do it is they
 have so-called drive cycles, like the [? FT6 ?] drive cycle. You know, the highway, the city
 cycle, which was a lot of on and off. And those drive cycles are actually different in Europe and
 the US and other countries. Every country has different drive cycles. So that's-- and what is a
 drive cycle, essentially? What word would we, as systems engineers, what word would we put
 on it?
-
 AUDIENCE:
-
-CONOPS.
-
-PROFESSOR:
-
+CONOPS.PROFESSOR:
 A drive cycle is just an, over time, accelerations velocity of the car, right?
-
 STUDENT:
-
 It's a CONOPS.
-
 PROFESSOR:
-
 It's a CONOPS A drive cycle is a CONOPS. And so for diesel engines, this issue that
 happened with Volkswagen, it's only an issue with the diesel, the TDI engines, right, not the
 gasoline engine.
@@ -776,48 +621,27 @@ Anybody else on the I-3. Now the I3 is interesting, because that's actually an e
 right? And so it doesn't have an engine, a diesel engine or a combustion engine, except if you
 get the range extender. So it's all electric, but you can actually, as an option get the range
 extender, which does use fuel. OK, EPFL, the i3, any other requirements there?
-
 AUDIENCE:
-
 So we have four [INAUDIBLE]
-
 PROFESSOR:
-
 Yeah.
-
 AUDIENCE:
-
 As a third one, the car shall carry [INAUDIBLE]
-
 PROFESSOR:
-
 OK, so recharging. The third requirement is interesting. You said of average build, right?
 That's the word you use.
-
 AUDIENCE:
-
 Yes.
-
 PROFESSOR:
-
 Now that's great. That's a human factors requirement. Now of average build is a little fuzzy,
 right? How would you make that more verifiable?
-
 AUDIENCE:
-
 [INAUDIBLE]
-
 PROFESSOR:
-
 Yeah, so there's actually people that, you know, the size distribution, male, female, you know,
 weight.
-
 AUDIENCE:
-
-[INAUDIBLE]
-
-PROFESSOR:
-
+[INAUDIBLE]PROFESSOR:
 And [INAUDIBLE] the metric measurements are actually being recorded and updated. People
 are getting taller around the world. People are getting heavier. We know that, right? So the
 way you would write that third requirement to be verifiable is that the car shall accommodate
@@ -825,60 +649,39 @@ for passengers in a, say, P10 male or P5 female and a P90 male, right? And if yo
 way, then you know the actual weight and dimensions of the human body can actually be
 traced to a database that's pretty well known. So then instead of saying average build, you say
 it's a PT50, P50 female. And that's something that's very verifiable. Does that make sense?
-
 AUDIENCE:
-
 Yes.
-
 PROFESSOR:
-
 OK, great. So what about the last one? So by the way, here at MIT, anybody who's been to
 EPFL? Been to the-- [INAUDIBLE] He has a Master's from there. [INAUDIBLE] been there?
 This is a very cool building. It's pretty unusual. I mean, we have some very unusual building on
 campus, too, here. But if you get a chance, it's pretty. Unusual so let's hear from you guys. So
 what do you think was a requirement for the [? Rolex ?] center design?
-
 AUDIENCE:
-
 The building should be a recognizable structure, that would be memorable for EPSL.
-
 PROFESSOR:
-
 Ah, interesting. A recognizable structure that should be memorable. So that's-- I think I know
 where you're going with this. But it's a little-- you know, recognizable. Every building is
 recognizable in a sense, right? I think-- I like it. I know where you're going with this. But it's a
 little fuzzy still, right?
 So why do you think it has holes in it? Why do you think the holes?
-
 AUDIENCE:
-
 [INAUDIBLE] unique might be a better word. [INAUDIBLE]
-
 PROFESSOR:
-
 Yeah. So that's really. The holes are, in some sense, inefficient, right? Because you're putting
 holes in the middle of a building. But they provide natural lighting. And there's a symbolism
 there, right? There's a symbolism, the Swiss cheese symbolism. So if the holes, in a sense,
 have at least two functions, right? That's good. I like that. That's very good. What else?
 Another example of a requirement for the [? Rolex ?] center?
-
 AUDIENCE:
-
 You're taking and making [INAUDIBLE] category. [INAUDIBLE]
-
 PROFESSOR:
-
 Good. No, that was great. So you have functional requirement, you had interface
 requirements. You had a lot of those six categories we talked about, right? Good. Excellent.
-Yeah? Go ahead.
-
-AUDIENCE:
-
+Yeah? Go ahead.AUDIENCE:
 So how do you write a requirement about something aesthetic in a way that's not fuzzy or is
 there a way to do that?
-
 PROFESSOR:
-
 That's a great question. I'm not sure I'm the best person to answer that. What I can't tell you
 is, in the automotive world, the aesthetics of automobiles and how people judge whether a car
 is beautiful or appealing, that's actually moved from being kind of just a very fuzzy thing to
@@ -891,45 +694,33 @@ actually, at this point, you can show them a-- not a sketch, but a model. And ba
 data and information, they'll tell you, this car will probably score between a 4.2 and 4.4 on the
 5 point aesthetic scale, JD Power scale. It's really pretty remarkable.
 But I guess the bigger point is there's some things that really delight us, that have an artistic
-quality and surprise us in aesthetic quality. And it's true. That is one of the tensions is yet-system engineering should-- you know, this very precise. Write it down. Make sure there is no
+quality and surprise us in aesthetic quality. And it's true. That is one of the tensions is yet--
+system engineering should-- you know, this very precise. Write it down. Make sure there is no
 fuzziness there or as little as possible. And then on the other hand, we want delightful,
 surprising things that have an artistic nature to them. And that is absolutely a tension. And we
 just acknowledge that.
 OK, any questions? Comments before we move on?
-
 AUDIENCE:
-
 I had a question about--?
-
 PROFESSOR:
-
 Hang on. Just one second. OK, go ahead. At EPFL?
-
 AUDIENCE:
-
 And to which extent can we refer [? to norms ?] and [? loads ?] in the requirements?
-
 PROFESSOR:
-
 Yeah, you should do that. So compliance, being compliant with standards and just to make
 clear, standards and regulations are not the same, right? A standard, like an IEEE standard or
 an ISO standard, it's not a law. It's not a legal thing. It's-- a standard it is something that
 maybe a group of companies or a group of organizations have agreed to. This is how we will
 do it, right? The IEEE Wi-Fi standard, what is it? 802.11g. And that's not a law. That's a
-standard. And if you're going to be 802.11g compliant, you write that in the requirements.
-
-The environmental emissions standards we talked about, those are actually laws. If you are
+standard. And if you're going to be 802.11g compliant, you write that in the requirements.The environmental emissions standards we talked about, those are actually laws. If you are
 going to sell a vehicle in country x, it has to comply legally with these regulations. But you're
 absolutely right, if you need to comply with these things, it needs to be part of the
 requirements set, because otherwise, it will not happen just automatically. [? Weston? ?]
 AUDIENCE:
-
 Yeah, it's kind of along that vein. If you have to comply, say, with ADA, instead you have to be
 called out, specifically, or do you say must comply with building codes or building laws? And
 it's sort of a blanket requirement?
-
 PROFESSOR:
-
 No, you have to be specific, because building codes are, first of all, a lot of these are local, as
 well. And it's very chaotic. So and some of these might be conflicting. So you should be as
 specific as possible.
@@ -952,9 +743,7 @@ everything upfront, there's uncertainty. We typically build in reserves into our
 And those are called margins. So we put in margins for mass, power, maybe memory in
 computer systems. So margins are essentially reserves that are not allocated to particular
 subsystems, but are controlled by the project managers or at a higher level.
-So the idea is that you write the requirement in a way that is a little bit more stringent than it
-
-really needs to be. And then by being more stringent, you've built some reserve into the
+So the idea is that you write the requirement in a way that is a little bit more stringent than itreally needs to be. And then by being more stringent, you've built some reserve into the
 system to handle unexpected things.
 So I'll just give you the example with mass growth. You know, this is very typical in aerospace
 vehicles. Mass growth can range between, here, 10 to 60%. I'll show you some examples. And
@@ -984,9 +773,7 @@ a lot of things. And the number, not to exceed number, which is shown here on th
 the maximum contract or allocated requirements threshold, was contractually specified. Not
 only that, but there were penalties, financial penalties, associated with every kilogram that you
 would be over.
-So this was a big deal. And they had a huge the wall chart in the hallway, the main hallway, of
-
-So this was a big deal. And they had a huge the wall chart in the hallway, the main hallway, of
+So this was a big deal. And they had a huge the wall chart in the hallway, the main hallway, ofSo this was a big deal. And they had a huge the wall chart in the hallway, the main hallway, of
 the engineering building. And every day somebody would actually manually update that day's
 best estimate of what the gross take off weight of the airplane would be. And it's like a
 Brownian motion thing. And as soon as you hit some critical threshold, you would see there'd
@@ -1017,9 +804,7 @@ And I think this is OK for smaller projects, where you have dozens or a few hund
 requirements, right? And so here's my rule of thumb for this. Do you remember the magic
 number 7? So we talked last time, where does the world of really complex systems start. And
 the argument was, well, if you need more than three levels of the decomposition. What does
-that mean? Well, 7 plus, minus 2 to the third power is somewhere between 125 and 729,
-
-right? So if you're sort of in that world or fewer, right? If a few hundred, a few dozen, or few
+that mean? Well, 7 plus, minus 2 to the third power is somewhere between 125 and 729,right? So if you're sort of in that world or fewer, right? If a few hundred, a few dozen, or few
 hundred requirements kind of what we have in CanSat. It's OK to do it this way. It's still going
 to be a lot of requirements. And you have to do a good job. But you can do it that way.
 If you have more than that, and that typically means more than 1,000 requirements to handle,
@@ -1037,21 +822,19 @@ co-developing a system. You can all write requirements and manage them on this c
 database, right? Because if you have a document, very quickly it's going to be confusing, as
 what's the latest version, who has the latest update. Version management becomes a
 nightmare.
-
 So just so you're aware of this. We're not going to be using DOORS in this class. We'll just do
 it document based. But you know the rule of thumb here is, more than 1,000 requirements,
 you've got to go to some professional solution.
 So here's a very sort of trivial example of hierarchical requirements with links. Requirement
-one, the systems shall fit into a volume not exceeding one cubic meter. And then we have subrequirements. The system's width shall be between 0.5 and 1 meter. The height, the depth.
+one, the systems shall fit into a volume not exceeding one cubic meter. And then we have sub-
+requirements. The system's width shall be between 0.5 and 1 meter. The height, the depth.
 The system shall be made entirely from aluminum 60/60 alloy. A sub-requirement here is the
 system shall not contain any internal voids or cavities. Requirement three, the shape of the
 system must be a cube. And then a sub-requirement, the angles between the sides shall be
 90 degrees plus or minus 1 degree.
 And so I did this here just in the slides. But if you click on this, it'll actually transport you into
 another requirement. This is the requirement four. The mass of the system shall not exceed
-2,700 kilograms, right? Aluminum has a density of about 2,700 kilograms per cubic meter. So I
-
-click back, it transports me back to the earlier requirement. So the fact that it's made of
+2,700 kilograms, right? Aluminum has a density of about 2,700 kilograms per cubic meter. So Iclick back, it transports me back to the earlier requirement. So the fact that it's made of
 aluminum and the volume cannot exceed one cubic meter, then this requirement four, the
 mass shall not exceed. It's not an independent requirement. It's an dependent or derived
 requirement based on the first two. And therefore, they're linked. Do you see how this works?
@@ -1062,7 +845,8 @@ envelope. So an aluminum cube with a side length of 60 centimeters this volume a
 mass will satisfy the requirements. It's not the only thing. There's a lot of other geometries that
 would satisfy it. But this particular instantiation would satisfy these requirements. So that's the
 idea hierarchical requirements, linking them to hyperlinks.
-OK, so let me talk briefly about the challenges now of requirements definition. And there's-this is not easy. There's a lot of challenges. The first one is requirements allocation. You know,
+OK, so let me talk briefly about the challenges now of requirements definition. And there's--
+this is not easy. There's a lot of challenges. The first one is requirements allocation. You know,
 there's composition and flowing requirements to the lower levels. And then the idea is that,
 whatever requirements you derive at a lower level, if you satisfy the lower level requirements,
 that should guarantee that you then automatically satisfy a higher level requirements from
@@ -1079,9 +863,7 @@ performance parameters, behind these. And depending on the complexity of the sys
 may have to go multiple layers down. But that's the basic requirements allocation process.
 And I think I said this already. It's difficult to do and stay solution neutral the deeper you go into
 this.
-Let me briefly mention, this will not be, we will not sort of test you on this. But I want to make
-
-you aware of this. A methodology called ISO performance. And that was actually the topic of
+Let me briefly mention, this will not be, we will not sort of test you on this. But I want to makeyou aware of this. A methodology called ISO performance. And that was actually the topic of
 my dissertation. How do you allocate requirements to lower level parameters in systems, when
 a higher level requirement is defined, is clear.
 So the idea is that you have a vector of desired performance requirements. And you want to
@@ -1112,9 +894,7 @@ these very, very faint images. So we have wavefront error phasing requirements. 
 have these pointing requirements. You've got to a point very stable and in order to achieve
 this optical pointing performance, we have the structure of the spacecraft. We have reaction
 wheels. We have controllers. And there is noise, different kinds of noise sources that are trying
-to basically prevent us from pointing with this precision.
-
-So very quickly, this is what this Nexus precursor spacecraft looks like in the deploy
+to basically prevent us from pointing with this precision.So very quickly, this is what this Nexus precursor spacecraft looks like in the deploy
 configuration, here on the upper right in the stowed configuration. Initial performance
 assessment. So this is really trying to define the requirements for deriving the requirements for
 the structure, for the optics, for the controller, knowing that this is the point. If you want to have
@@ -1144,14 +924,13 @@ Jacobian matrix, that will tell you how do you move in that space to keep the pe
 fixed at the requirement level.
 Let me explain this just using two parameters. And this was a big deal in the Hubble Space
 Telescope. So the two parameters I'm going to use are KR ISO and UD, the dynamic wheel
-and balance. So these spacecrafts have reaction wheels that are turning to point the
-
-spacecraft and counteract any momentum that you get from, for example, from solar
+and balance. So these spacecrafts have reaction wheels that are turning to point thespacecraft and counteract any momentum that you get from, for example, from solar
 pressure. So UD is the amount of imbalance that you have in these wheels. If you have
 imbalance, that will cause chatter. It will cost torques, which will cause that jitter. And then KR
 ISO is the vibration isolation of the reaction wheel assembly. How stiff or soft is the vibration
 isolation.
-And what you can see in this clock is that, our initial design-- this is based on a simulation-does not satisfy a higher level requirement. In order to satisfy that, we need to go down to the
+And what you can see in this clock is that, our initial design-- this is based on a simulation--
+does not satisfy a higher level requirement. In order to satisfy that, we need to go down to the
 blue line, labelled with 5 microns appointing precision. And what you can see is that there are
 different ways to achieve that 5 microns.
 We could go over here. This is labeled as HST. That's what Hubble Space Telescope is. The
@@ -1168,31 +947,22 @@ Or you can go straight down to this point here called spec. So you're essentiall
 noisier reaction wheel. But then you need a very, very soft, very capable isolation stage, very
 soft isolator. What's the disadvantage of having very soft isolation? What do you think is the
 big issue?
-
 AUDIENCE:
-
 [INAUDIBLE]
-
 PROFESSOR:
-
 So the launch. You probably have to lock it down during launch. You have a big
 displacements. You need, if you have a very soft isolation stage, you need volume, because
 the isolator is going to move a lot, right? And you may not have that volume. Or you could do a
 little bit of each.
-So this test point here. We're going to have quieter wheels, but not ultra quiet. And we're going
-
-to have a soft isolator. But we have the right combination of the two. And we're going to go for
+So this test point here. We're going to have quieter wheels, but not ultra quiet. And we're goingto have a soft isolator. But we have the right combination of the two. And we're going to go for
 that point there. So now if you go for that point, you're going to satisfy your pointing
 requirement, bu you've allocate at the lower level requirement, in this case, to the isolation
 stage and the dynamic wheel imbalance in a kind of balanced way. So everybody's job is
 roughly equally difficult. That's the sort of idea here. Yes?
 AUDIENCE:
-
 Does this model assume that all of these variables are independent and, I guess, kind of
 continuous in terms of you can incrementally work better?
-
 PROFESSOR:
-
 So they're not independent in the sense that they're coupled through the performance of the
 system. But you can choose-- the assumption is you can choose these independently. But
 they're coupled, because you need to achieve that requirement. And yes, in this case, they're
@@ -1207,28 +977,17 @@ achieving a higher level requirement. But in a way that this [INAUDIBLE] sort of
 equitably across sub-systems.
 Does that make sense? At EPFL, did you guys follow this? I know this was a bit fast. But that's
 the basic idea of ISO performance. Any questions on your side?
-
 AUDIENCE:
-
 [INAUDIBLE]
-
 AUDIENCE:
-
 Maybe I have one. So given that you have [? distance ?] requirements and you probably have
 [INAUDIBLE] for each one, is there a way that we would integrate all those [? lines, ?] that you
 could see the [INAUDIBLE] for those? If you don't mind, maybe it's a little bit [? softer, ?] but
 maybe there's another requirement where [INAUDIBLE]
-
 PROFESSOR:
-
 [INAUDIBLE]
-
 AUDIENCE:
-
-We don't hear you.
-
-PROFESSOR:
-
+We don't hear you.PROFESSOR:
 Sorry, guys, ran out of battery here. Can you hear me again? Can you hear me? Yeah? So
 the question was, well if you have multiple of these performance, ISO performance lines, that's
 exactly right. If you have a vector of higher level requirements, you're going to have ISO
@@ -1249,7 +1008,6 @@ then 5.9 meters helium, 6.1 meters hydrogen, all these requirements actually are
 of these requirements are feasible.
 OK, so I'll give you I'll give you three minutes to try and figure this out. And then I'll show you
 the solution. Don't cheat. Don't go to the next chart.
-
 So think about this the high level requirement is the balloon shall lift 1,000 kilograms, including
 its own mass. And we're trying to allocate lower level requirements for the size of the balloon
 and the gas that we're going to use. So try to figure this out.
@@ -1258,9 +1016,7 @@ OK, so we're going to leave this as a cliffhanger, OK? We'll do the solution nex
 a little time to figure this out. Try not to look at the next slide, OK?
 So I'm going to skip this just for time. And I want to talk briefly about the SRR, what it is, and
 then kick off assignment 2. So SRR. So the idea is you've really been working on these
-requirements hard, you know, as a team, with your customers. And this takes-- this is not a
-
-quick thing. This is not just two or three days. Typically, writing your level 0, level 1
+requirements hard, you know, as a team, with your customers. And this takes-- this is not aquick thing. This is not just two or three days. Typically, writing your level 0, level 1
 requirements is a process that takes weeks, months, sometimes at least a year. But typically,
 it's on the order of three to six months in many projects, roughly.
 And once you have your high level requirements, SRR is the milestone where you review
@@ -1282,7 +1038,6 @@ added post SRR. and even some of the-- you pointed out, some of you, the require
 creep and these things. So this second reading is about requirements volatility, which you can
 actually quantify. What are the sources of requirements volatility? That's what this figure
 shows you. And then what is the impact of requirements volatility?
-
 What is the impact of requirements volatility on a project? So specifically, on the number of
 system requirements, on rework, on project schedule, and so forth. Really, it's a very, very
 recent paper on requirements volatility.
@@ -1290,9 +1045,7 @@ So let me just kick off assignment 2. And then we'll be done. So assignment 2 go
 and is due in two weeks. So that's October 9. And it's very focused on requirements. Basically,
 what I want you-- and it's the same teams that you're in for all the assignments. Is essentially,
 first of all, first task is find a project or program where poorly written or managed requirements
-were a major problem. So as a team, discuss an example and discuss that example as a
-
-team.
+were a major problem. So as a team, discuss an example and discuss that example as ateam.
 The second task is look at those CanSat 2016 requirements, those 47 base requirements and
 analyze those critically. So that means are they feasible, are they well-written. Classify them.
 What type of requirement is it? Is it an interface requirement? Is it a performance
