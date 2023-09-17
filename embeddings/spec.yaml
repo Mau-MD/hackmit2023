@@ -1,0 +1,139 @@
+openapi: "3.0.0"
+info:
+  version: "1.0.0"
+  title: "Embeddings API"
+  description: "API for managing embeddings, classes, and lectures."
+
+paths:
+  /chat:
+    post:
+      summary: "Chat with the LectureGPT"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                query:
+                  type: string
+                  description: "Chat with Lecture trained GPT Chatbot"
+                lecture_id:
+                  type: integer
+                  description: "ID of the lecture."
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                type: string
+                example: "As seen in the lecture, the process of defining requirements is an iterative one. Typically, at the system requirements review, we review and agree on the high-level requirements, such as level 0 and level 1, but not the lower-level requirements. This is because the lower-level requirements cannot be fully determined until the design process has progressed. So, it is not recommended to start the requirements at the lower level initially. It is important to first establish the high-level requirements and then proceed with the iterative process of refining and defining the lower-level requirements as the design decisions are made."
+
+  /get-context:
+    post:
+      summary: "Retrieve context based on query and lecture ID"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                query:
+                  type: string
+                  description: "The query for which context is to be fetched."
+                lecture_id:
+                  type: integer
+                  description: "ID of the lecture."
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  context:
+                    type: string
+                    description: "Context based on the provided query and lecture ID."
+
+  /add-context:
+    post:
+      summary: "Add context based on query and lecture ID"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                query:
+                  type: string
+                  description: "The query for which context is to be added."
+                lecture_id:
+                  type: integer
+                  description: "ID of the lecture."
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "success"
+
+  /add-class:
+    post:
+      summary: "Add a class with the given name"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                class_name:
+                  type: string
+                  description: "Name of the class to be added."
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "ok"
+
+  /add-lecture:
+    post:
+      summary: "Add a lecture with given details"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                lecture_name:
+                  type: string
+                  description: "Name of the lecture."
+                class_id:
+                  type: integer
+                  description: "ID of the associated class."
+                youtube_link:
+                  type: string
+                  format: uri
+                  description: "YouTube link for the lecture."
+                pdf_link:
+                  type: string
+                  format: uri
+                  description: "PDF link for the lecture."
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "ok"

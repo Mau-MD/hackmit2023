@@ -3,7 +3,7 @@ from modal import Stub, Image, wsgi_app, Secret
 
 
 stub = Stub("embeddings")
-image = Image.debian_slim().apt_install("libpq-dev").pip_install("flask", "openai", "python-dotenv", "psycopg2")
+image = Image.debian_slim().apt_install("libpq-dev").pip_install("flask", "openai", "python-dotenv", "psycopg2", "flask-swagger-ui", "PyYAML")
 
 
 @stub.function(image=image, secret=modal.Secret.from_name("DB"))
@@ -120,8 +120,23 @@ def app():
     app = Flask(__name__)
 
     from flask import request
+    from flask_swagger_ui import get_swaggerui_blueprint
 
     embeddings = Embeddings()
+
+    SWAGGER_URL = '/docs'  # URL for exposing Swagger UI (without trailing '/')
+    API_URL = 'https://storage.googleapis.com/opentutor/spec.yaml'  # Our API url (can of course be a local resource)
+
+    # Call factory function to create our blueprint
+    swaggerui_blueprint = get_swaggerui_blueprint(
+        SWAGGER_URL,  # Swagger UI static files will be mapped to '{SWAGGER_URL}/dist/'
+        API_URL,
+        config={  # Swagger UI config overrides
+            'app_name': "Embeddings API"
+        }
+    )
+
+    app.register_blueprint(swaggerui_blueprint, url_prefix=SWAGGER_URL)
 
     @app.route('/chat', methods=['POST'])
     def chat():
