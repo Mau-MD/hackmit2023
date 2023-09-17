@@ -1,19 +1,20 @@
-from modal import Stub, Image, wsgi_app
+import modal
+from modal import Stub, Image, wsgi_app, Secret
 
 
 stub = Stub("embeddings")
 image = Image.debian_slim().apt_install("libpq-dev").pip_install("flask", "openai", "python-dotenv", "psycopg2")
 
 
-@stub.function(image=image)
+@stub.function(image=image, secret=modal.Secret.from_name("OPENAIKEY"))
 @wsgi_app()
 def app():
     from flask import Flask
     import os
     import pickle
-    from dotenv import load_dotenv
     import openai
     import psycopg2
+
 
 
     # Embeddings
@@ -21,8 +22,7 @@ def app():
         embeddings_model = "text-embedding-ada-002"
 
         def __init__(self):
-            load_dotenv()
-            openai.api_key = os.getenv("OPENAIKEY")
+            openai.api_key = os.environ["OPENAIKEY"]
             self.db = DB()
 
         def get_context(self, query):
@@ -105,3 +105,4 @@ def app():
         return context
 
     return app
+
