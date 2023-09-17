@@ -23,9 +23,9 @@ def get_txt(source):
         text += page.extract_text()
     return text
 
-def read_config():
+def read_config(filename):
     configs = []
-    with open('config.csv', 'r') as file:
+    with open(filename, 'r') as file:
         reader = csv.reader(file)
         next(reader)  # Skip the header row
         for row in reader:
@@ -33,12 +33,11 @@ def read_config():
 
     return configs
 
-if __name__ == "__main__":
-    base_url = "https://mau-md--embeddings-app.modal.run/kill"
-    requests.get(base_url)
+def convert(filename):
+    # base_url = "https://mau-md--embeddings-app.modal.run/kill"
+    # requests.get(base_url)
 
-    configs = read_config()
-    print(configs)
+    configs = read_config(filename)
 
     for lecture in configs:
         print(lecture.lec_name)
