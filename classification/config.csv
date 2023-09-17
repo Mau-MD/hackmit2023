@@ -1,4 +1,6 @@
-Lec Name, Lec ID, Class Name, Class ID, YouTube Link, PDF Link
-16.842 transcr, 1, 16.842 - Fundamentals of Systems Engineering, 1, https://youtu.be/J_y2I09rj_I, https://ocw.mit.edu/courses/16-842-fundamentals-of-systems-engineering-fall-2015/41de4134b97908d36729d2afc23f91f8_J_y2I09rj_I.pdf
-6.046 L17, 2, 6.046 - Design and Analysis of Algorithms, 2, null, https://ocw.mit.edu/courses/6-046j-design-and-analysis-of-algorithms-spring-2012/resources/mit6_046js12_lec17/
-6.046 L3, 3, 6.046 - Design and Analysis of Algorithms, 2, https://youtu.be/iTMn0Kt18tg, https://ocw.mit.edu/courses/6-046j-design-and-analysis-of-algorithms-spring-2015/6c4e79cba85427e3ed99637eed01227f_iTMn0Kt18tg.pdf
+Class Name, Lec Name, URL
+16.842 - Fundamentals of Systems Engineering,16.842 L2,https://ocw.mit.edu/courses/16-842-fundamentals-of-systems-engineering-fall-2015/resources/session-2-requirements-definition/
+6.046 - Design and Analysis of Algorithms,6.046 L3,https://ocw.mit.edu/courses/6-046j-design-and-analysis-of-algorithms-spring-2015/resources/lecture-3-divide-conquer-fft/
+6.046 - Desing and Analysis of Algorithms,6.046 L4,https://ocw.mit.edu/courses/6-046j-design-and-analysis-of-algorithms-spring-2015/resources/lecture-4-divide-conquer-van-emde-boas-trees/
+6.046 - Design and Analysis of Algorithms,6.046 L5,https://ocw.mit.edu/courses/6-046j-design-and-analysis-of-algorithms-spring-2015/resources/lecture-5-amortization-amortized-analysis/
+6.046 - Design and Analysis of Algorithms,6.046 L16,https://ocw.mit.edu/courses/6-046j-design-and-analysis-of-algorithms-spring-2015/resources/lecture-16-complexity-p-np-np-completeness-reductions/
