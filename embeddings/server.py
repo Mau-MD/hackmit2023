@@ -25,9 +25,9 @@ def app():
             openai.api_key = os.environ["OPENAIKEY"]
             self.db = DB()
 
-        def get_context(self, query):
+        def get_context(self, query, lecture_id):
             embedding = self._get_embedding(query)
-            return self._get_embedding_best_match(embedding)
+            return self._get_embedding_best_match(embedding, lecture_id)
 
         def add_context(self, query, lecture_id):
             embedding = self._get_embedding(query)
@@ -46,12 +46,11 @@ def app():
                 return pickle.load(f)
 
         def _save_embeddings_to_db(self, lecture_id, text, embedding):
-            print(embedding)
             query = f"INSERT INTO embeddings (lecture_id, text, vector) VALUES ({lecture_id}, '{text}', '{self.db.convert_to_vector(embedding)}')"
             self.db.execute_and_commit(query)
         
-        def _get_embedding_best_match(self, embedding):
-            return self.db.get_match(embedding)
+        def _get_embedding_best_match(self, embedding, lecture_id):
+            return self.db.get_match(embedding, lecture_id)
         
     class DB:
         # constructor
@@ -76,9 +75,9 @@ def app():
         def convert_to_vector(self,embedding):
             return "{" + ",".join([str(x) for x in embedding]) + "}"
 
-        def get_match(self, query_embedding, n = 10):
+        def get_match(self, query_embedding, lecture_id, n = 10):
             # vector = self.convert_to_vector(query_embedding)
-            query = f"SELECT lecture_id, text, l2sq_dist(vector, ARRAY{query_embedding}) AS dist FROM embeddings ORDER BY vector <-> ARRAY{query_embedding} LIMIT {n};"
+            query = f"SELECT lecture_id, text, l2sq_dist(vector, ARRAY{query_embedding}) AS dist FROM embeddings WHERE lecture_id = {lecture_id} ORDER BY vector <-> ARRAY{query_embedding} LIMIT {n};"
             return self.execute_and_fetch(query)
 
 
@@ -89,15 +88,25 @@ def app():
 
     def ask_gpt(context, qry):
         response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",
+            model="gpt-3.5-turbo-16k",
             messages=[
-                {"role": "system", "content": "Imagine you are a professor. This are some relevant parts of the lecture you just gave: " + context},
-                {"role": "user", "content": "Professor, I have a question on the lecture. My question is: " + qry},
+                {"role": "user", "content": """
+                Imagine you are a very enthusiastic professor at a very prestigious university. You just gave a lecture which I will give you as context, and a student has a question for you. Answer in a helpful way, using content ONLY from the lecture you just gave. Do not respond with information outside the context I will give to you. If you don't know the answer,
+                do not invent things, simply say that you currently cannot help with the question, or that you don't know the answer. If figure examples are available always mention and reference them.
+                ---
+                Context: """ + context + """.
+                ---
+                The question the student has is:""" + qry + """
+                ---
+                Start the answer by saying: "As seen on the lecture..." or something similar
+                ---
+                DO NOT USE INFORMATION IF IS NOT PROVIDED IN THE CONTEXT. If you don't have context to answer the question just say "I don't know the answer to that question" or "I don't have enough information to answer that question" or something similar."""},
             ],
             temperature=0.7
         )
 
-    return response['choices'][0]['text']['message']['content']
+        return response['choices'][0]['message']['content']
+
     app = Flask(__name__)
 
     from flask import request
@@ -107,13 +116,31 @@ def app():
     @app.route('/chat', methods=['POST'])
     def chat():
         json = request.get_json()
-        context = embeddings.get_context(json['query'])
+
+        query= json['query'].replace("'", "")
+        lecture_id = json['lecture_id']
+
+        contexts = embeddings.get_context(query, lecture_id)
+
+        context_arr = []
+
+        for context in contexts:
+            context_text = context[1]
+            context_arr.append(context_text)
+        
+
+
+        response = ask_gpt("\n".join(context_arr), json['query'])
+        return response
+
 
 
     @app.route('/get-context', methods=['POST'])
     def get_context():
         json = request.get_json()
-        context = embeddings.get_context(json['query'])
+        query = json['query'].replace("'", "")
+        lecture_id = json['lecture_id']
+        context = embeddings.get_context(query, lecture_id)
         return context
 
     @app.route('/add-context', methods=['POST'])
