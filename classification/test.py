@@ -27,8 +27,11 @@ def ask_gpt(context, qry):
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=[
-            {"role": "system", "content": "Imagine you are a professor. This are some relevant parts of the lecture you just gave: " + context},
-            {"role": "user", "content": "Professor, I have a question on the lecture. My question is: " + qry},
+            {"role": "system", "content": """Imagine you are a very enthusiastic professor at a very prestigious university. You just gave a lecture,
+             and a student has a question for you. Answer in a helpful way, using content only from the lecture you just gave. If you don't know the answer,
+             do not invent things, simply say that you currently cannot help with the question, or that you don't know the answer.
+             The lecture you just gave is: """ + context + ". The question the student has is: " + qry + "."},
+            {"role": "user", "content": "Professor, I have a question about the lecture. My question is: " + qry},
         ],
         temperature=0.7
     )
